@@ -22,6 +22,17 @@ class Personaje():
 
     def render(self):
         pygame.draw.rect(screen, self.color, (self.x, self.y, self.tamano, self.tamano))
+    def up(self):
+        self.y = self.y - 10
+
+    def left(self):
+        self.x = self.x - 10
+
+    def down(self):
+        self.y = self.y + 10
+
+    def right(self):
+        self.x = self.x + 10
 
 # creamos una figura en el centro de la pantalla con dimensiones 100px, velocidad 10 (sin uso aún)
 personaje = Personaje( ancho // 2 , alto // 2, 0.1, (255,255,255), 100)
@@ -43,9 +54,18 @@ while running:
     for event in pygame.event.get():
         # deteccion de teclas
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_h:
-                # elegimos cerrar con H sin ninguna buena razón
-                running = False
+            match (event.key):
+                case (pygame.K_w) | (pygame.K_UP):
+                    personaje.up()
+                case (pygame.K_a) | (pygame.K_LEFT):
+                    personaje.left()
+                case (pygame.K_s) | (pygame.K_DOWN):
+                    personaje.down()
+                case (pygame.K_d) | (pygame.K_RIGHT):
+                    personaje.right()
+                case (pygame.K_h) | (pygame.K_ESCAPE):
+                    # elegimos cerrar con H sin ninguna buena razón
+                    running = False
         # detecta cierre de ventana
         if event.type == pygame.QUIT:
             running = False
