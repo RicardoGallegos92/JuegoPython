@@ -22,17 +22,6 @@ class Personaje():
 
     def render(self):
         pygame.draw.rect(screen, self.color, (self.x, self.y, self.tamano, self.tamano))
-    # def up(self):
-    #     self.y = self.y + 10
-
-    # def left(self):
-    #     self.x = self.x - 10
-
-    # def down(self):
-    #     self.y = self.y - 10
-
-    # def right(self):
-    #     self.x = self.x + 10
 
 # creamos una figura en el centro de la pantalla con dimensiones 100px, velocidad 10 (sin uso aún)
 personaje = Personaje( ancho // 2 , alto // 2, 0.1, (255,255,255), 100)
